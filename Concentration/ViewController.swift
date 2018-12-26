@@ -13,21 +13,17 @@ class ViewController: UIViewController {
     // MARK: Variable Declaration
     
     // Use lazy for correct initialization
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    
-    /*
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    // Create read only computed variable numberOfPairsOfCards
+    var numberOfPairsOfCards: Int {
+        return (cardButtons.count + 1) / 2
     }
-    */
     
-    var emojiChoices = Array<String>()
+    private var emojiChoices = Array<String>()
     
-    var emoji = [Int: String]()
+    private var emoji = [Int: String]()
     
-    var themesChoices = [
+    private var themesChoices = [
         ["emojiChoices": ["🎃", "👻", "☠️", "💩", "💀", "👁", "😈", "👺", "😱"],
          "backGroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)],
@@ -48,9 +44,9 @@ class ViewController: UIViewController {
          "cardsBackSideColor": #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
     ]
 
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     // Update view by model data changing
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
         scoreLabel.text = "Score: \(game.score)"
         
@@ -95,7 +91,7 @@ class ViewController: UIViewController {
     }
     
     // Get random emoji for the cards array
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
@@ -110,14 +106,14 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    func gameStart() {
+    private func gameStart() {
         //flipCount = 0
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
         //emojiChoices = ["🎃", "👻", "☠️", "💩", "💀", "👁", "😈", "👺", "😱"]
         setTheme()
     }
     
-    func setTheme() {
+    private func setTheme() {
         print("We Are in set theme method")
         let randomIndexOfTheme = Int(arc4random_uniform(UInt32(themesChoices.count)))
         let theme = themesChoices[randomIndexOfTheme]
