@@ -218,6 +218,7 @@
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="vzD-GQ-lGf" id="X7K-CY-Pwa"/>
+                        <outlet property="newGameButton" destination="dna-Cd-cMH" id="fVp-TZ-lUc"/>
                         <outlet property="scoreLabel" destination="iKw-LI-MTm" id="aME-pi-hVX"/>
                         <outletCollection property="cardButtons" destination="kag-aF-hlR" collectionClass="NSMutableArray" id="rbG-mu-bqa"/>
                         <outletCollection property="cardButtons" destination="ANf-yR-zmf" collectionClass="NSMutableArray" id="iqg-aH-6wK"/>
