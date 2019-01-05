@@ -8,14 +8,24 @@
 
 import Foundation
 
-struct Card {
+struct Card: Hashable {
+    
+    // Hashable and Equatable protocols implementation
+    var hashValue: Int {
+        return identifier
+    }
+    
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
     
     // Declare variables
     
     var isFaceUp = false
     var isMatched = false
     var isSelectedBefore = false
-    var identifier: Int
+    private var identifier: Int
     
     // Declare struct variable
     

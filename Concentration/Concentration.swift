@@ -48,7 +48,7 @@ class Concentration {
                 
                 // Check if cards match and check if choosen cards is selected before
                 
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     // Increase score by 2

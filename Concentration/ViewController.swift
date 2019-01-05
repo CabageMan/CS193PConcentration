@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     private var emojiChoices = Array<String>()
     
-    private var emoji = [Int: String]()
+    private var emoji = [Card: String]()
     
     private var buttonsColor = UIColor()
     
@@ -114,12 +114,12 @@ class ViewController: UIViewController {
     // Get random emoji for the cards array
     private func emoji(for card: Card) -> String {
         
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+        if emoji[card] == nil, emojiChoices.count > 0 {
             let randomIndex = emojiChoices.count.arc4random
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card] = emojiChoices.remove(at: randomIndex)
         }
         // return placeholder if optional value in dictionary not set
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     @IBAction func startNewGame(_ sender: UIButton) {
