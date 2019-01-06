@@ -31,29 +31,56 @@ class ViewController: UIViewController {
         return (cardButtons.count + 1) / 2
     }
     
-    private var emojiChoices = Array<String>()
+    // Change emojichoices from array of strings to string
+    //private var emojiChoices = Array<String>()
+    private var emojiChoices = String()
     
     private var emoji = [Card: String]()
     
     private var buttonsColor = UIColor()
     
+    // Change first type of values in themes dictionary from array of strings to string
+    
+    /*
+     private var themesChoices = [
+     ["emojiChoices": ["🎃", "👻", "☠️", "💩", "💀", "👁", "😈", "👺", "😱"],
+     "backGroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)],
+     ["emojiChoices": ["🐱", "🐶", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨"],
+     "backGroundColor": #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)],
+     ["emojiChoices": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓"],
+     "backGroundColor": #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)],
+     ["emojiChoices": ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓"],
+     "backGroundColor": #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)],
+     ["emojiChoices": ["😃", "😆", "😂", "☺️", "😇", "😉", "😜", "🤗", "😎"],
+     "backGroundColor": #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)],
+     ["emojiChoices": ["🙏🏻", "🤝", "👍", "👍", "👎", "👊", "✊", "🤘", "✌️"],
+     "backGroundColor": #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1),
+     "cardsBackSideColor": #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
+     ]
+     */
+    
     private var themesChoices = [
-        ["emojiChoices": ["🎃", "👻", "☠️", "💩", "💀", "👁", "😈", "👺", "😱"],
+        ["emojiChoices": "🎃👻☠️💩💀👁😈👺😱",
          "backGroundColor": #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)],
-        ["emojiChoices": ["🐱", "🐶", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨"],
+        ["emojiChoices": "🐱🐶🐭🐹🐰🦊🐻🐼🐨",
          "backGroundColor": #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)],
-        ["emojiChoices": ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓"],
+        ["emojiChoices": "🍏🍎🍐🍊🍋🍌🍉🍇🍓",
          "backGroundColor": #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)],
-        ["emojiChoices": ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱", "🏓"],
+        ["emojiChoices": "⚽️🏀🏈⚾️🎾🏐🏉🎱🏓",
          "backGroundColor": #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)],
-        ["emojiChoices": ["😃", "😆", "😂", "☺️", "😇", "😉", "😜", "🤗", "😎"],
+        ["emojiChoices": "😃😆😂☺️😇😉😜🤗😎",
          "backGroundColor": #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)],
-        ["emojiChoices": ["🙏🏻", "🤝", "👍", "👍", "👎", "👊", "✊", "🤘", "✌️"],
+        ["emojiChoices": "🙏🏻🤝👍👎👊✊🤘✌️👌",
          "backGroundColor": #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1),
          "cardsBackSideColor": #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)]
     ]
@@ -115,8 +142,11 @@ class ViewController: UIViewController {
     private func emoji(for card: Card) -> String {
         
         if emoji[card] == nil, emojiChoices.count > 0 {
-            let randomIndex = emojiChoices.count.arc4random
-            emoji[card] = emojiChoices.remove(at: randomIndex)
+            // Change from array to string
+            //let randomIndex = emojiChoices.count.arc4random
+            //emoji[card] = emojiChoices.remove(at: randomIndex)
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
         // return placeholder if optional value in dictionary not set
         return emoji[card] ?? "?"
@@ -137,7 +167,7 @@ class ViewController: UIViewController {
         let randomIndexOfTheme = themesChoices.count.arc4random
         let theme = themesChoices[randomIndexOfTheme]
         if theme["emojiChoices"] != nil, theme["backGroundColor"] != nil, theme["cardsBackSideColor"] != nil {
-            emojiChoices = theme["emojiChoices"] as! [String]
+            emojiChoices = theme["emojiChoices"] as! String
             buttonsColor = theme["cardsBackSideColor"] as! UIColor
             
             // Set background, buttons and labels color
@@ -150,7 +180,9 @@ class ViewController: UIViewController {
             scoreLabel.textColor = buttonsColor
             newGameButton.setTitleColor(buttonsColor, for: UIControlState.normal)
         } else {
-            emojiChoices = Array(repeating: "?", count: cardButtons.count)
+            // Change array to string
+            //emojiChoices = Array(repeating: "?", count: cardButtons.count)
+            emojiChoices = String(repeating: "?", count: cardButtons.count)
         }
     }
     
