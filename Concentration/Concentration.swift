@@ -15,6 +15,11 @@ class Concentration {
     var score = 0
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
+            // Change for in by closure
+            let faceUpCardIndices = cards.indices.filter{cards[$0].isFaceUp}
+            // Give me all the face card indices by filtering the indices to show me the ones that are face up
+            return faceUpCardIndices.count == 1 ? faceUpCardIndices.first : nil
+            /*
             var foundIndex: Int? = nil
             for index in cards.indices {
                 if cards[index].isFaceUp {
@@ -26,6 +31,7 @@ class Concentration {
                 }
             }
             return foundIndex
+            */
         }
         set (newValue) {
             for index in cards.indices {
